@@ -22,3 +22,27 @@ Windows doesn't have a package manager as sophisticated as Ubuntu. [Chocolately]
     C:\> cinst nodejs.install
 	
 The official site provides [binaries](http://nodejs.org/download/) for download as well.
+
+#### From source
+Download the source from the official website and extract it. Make
+sure you have Python 2.6 or 2.7 before you begin.
+
+Run the following from the directory
+
+    $ ./config
+    $ make
+    $ sudo make install
+
+# Mongoose
+Older version of node.js may give the following error after installing
+latest mongoose (as of this writing 3.8.6). This problem is discussed
+[here](https://github.com/mongodb/js-bson/issues/58)
+
+This problem can be solved by building the latest node (0.10.25)
+from source. Then run the following
+
+    npm cache clean
+    rm -rf node_modules
+    npm install mongoose --save-dev
+
+Use the --save-dev option to add mongoose to package.json (if you have one)
