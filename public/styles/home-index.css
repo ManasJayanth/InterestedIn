@@ -1,0 +1,25 @@
+body{
+    max-width: 90%;
+    margin: auto;
+    background-image: url('../img/background.jpg'); 
+}
+
+header{
+    margin: 30px 0px 30px 0px;
+    padding: 40px 10px 40px 10px;
+}
+
+.site-intro {
+    height: 400px;
+    padding: 16% 2% 15% 5%;
+    background-color: rgba(0,0,0,0.8);
+}
+.site-intro p {
+    color: white;
+}
+.sign-up{
+    height: 400px;
+    padding-top: 4%;
+    background-color: rgba(0,0,0,0.8);
+    color: white;
+}
