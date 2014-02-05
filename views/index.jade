@@ -5,25 +5,35 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible",content="IE=edge")
     meta(name="viewport",content="width=device-width,initial-scale=1")
     title InterestedIn
-    link(href="bower_components/bootstrap/dist/css/bootstrap.min.css",rel="stylesheet")
+    link(href="js/bower_components/bootstrap/dist/css/bootstrap.min.css",rel="stylesheet")
     link(href="styles/home-index.css",rel="stylesheet")
     script(data-main='js/boot', type='text/javascript',src='/js/lib/require.js')
   body
     div.container-fluid
+
       header
         h1 Welcome to InterestedIn!
+
       div.col-xs-6.site-intro
         p
           | InterestedIn is a social network created using Node.js for
           | like minded individuals
-       div.col-xs-6.sign-up
-         form(role="form",action="register")
-           div.form-group
-             label(for="exampleInputEmail1") Email address
-               input.form-control#exampleInputEmail1(type="email" ,placeholder="Enter email")
+
+      div.col-xs-6.sign-up
+        h1 Register
+        hr
+        form(role="form",action="register")
+          div.form-group
+            label(for="exampleInputEmail1") Email address
+            div
+              input.form-control#exampleInputEmail1(type="email" ,placeholder="Enter email")
+          
           div.form-group
             label(for="exampleInputPassword1") Password
-            input.form-control#exampleInputPassword1(type="password",placeholder="Password")
-          button.btn.btn-default(type="submit") Submit
-    script(src="bower_components/jquery/jquery.min.js")
-    script(src="bower_components/bootstrap/dist/js/bootstrap.min.js")
+            div
+              input.form-control#exampleInputPassword1(type="password",placeholder="Password")
+          
+          button.btn.btn-default(type="submit") Register
+
+    script(src="js/bower_components/jquery/jquery.min.js")
+    script(src="js/bower_components/bootstrap/dist/js/bootstrap.min.js")
