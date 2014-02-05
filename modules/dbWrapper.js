@@ -10,7 +10,9 @@ database = 'users';
 
 /* Database Schema */
 dbSchema = new mongoose.Schema({
-    name: { type: String }
+    username: { type: String },
+    email: { type: String },
+    password: { type: String }
 });
 
 /* Create Model */
