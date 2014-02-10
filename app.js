@@ -21,7 +21,8 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.cookieParser());
+app.use(express.session({secret: '1234567890QWERTY'}));
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
