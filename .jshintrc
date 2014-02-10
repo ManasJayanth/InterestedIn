@@ -14,5 +14,6 @@
                 },
     "indent": 4,
     "camelcase": true,
-    "newcap": true
+    "newcap": true,
+    "node": true
 }

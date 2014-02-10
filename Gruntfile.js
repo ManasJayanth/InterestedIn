@@ -43,6 +43,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-jsdoc');
 
+
     // Install pre-commit hooks
     grunt.registerTask('hookmeup', ['clean:hooks', 'shell:hooks']);
 };
