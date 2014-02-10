@@ -1,4 +1,3 @@
-var mailuser = require('../modules/MailUser');
 module.exports = function(config, mongoose, nodemailer) {
   var crypto = require('crypto');
 
@@ -28,7 +27,6 @@ module.exports = function(config, mongoose, nodemailer) {
   };
 
   var changePassword = function(accountId, newpassword) {
-      console.log('acc' + accountId);
     var shaSum = crypto.createHash('sha256');
     shaSum.update(newpassword);
     var hashedPassword = shaSum.digest('hex');
@@ -44,31 +42,28 @@ module.exports = function(config, mongoose, nodemailer) {
         // Email address is not a valid user
         callback(false);
       } else {
-          mailuser.send(email, 'New password: ' + resetPasswordUrl);
-        // var smtpTransport = nodemailer.createTransport('SMTP', config.mail);
-        // resetPasswordUrl += '?account=' + doc._id;
-        // smtpTransport.sendMail({
-        //   from: 'thisapp@example.com',
-        //   to: doc.email,
-        //   subject: 'SocialNet Password Request',
-        //   text: 'Click here to reset your password: ' + resetPasswordUrl
-        // }, function forgotPasswordResult(err) {
-        //   if (err) {
-        //     callback(false);
-        //   } else {
-        //     callback(true);
-        //   }
-        // });
-
-
+        var smtpTransport = nodemailer.createTransport('SMTP', config.mail);
+        resetPasswordUrl += '?account=' + doc._id;
+        smtpTransport.sendMail({
+          from: 'thisapp@example.com',
+          to: doc.email,
+          subject: 'SocialNet Password Request',
+          text: 'Click here to reset your password: ' + resetPasswordUrl
+        }, function forgotPasswordResult(err) {
+          if (err) {
+            callback(false);
+          } else {
+            callback(true);
+          }
+        });
       }
     });
   };
 
   var login = function(email, password, callback) {
     var shaSum = crypto.createHash('sha256');
-      shaSum.update(password);
-      Account.findOne({email:email,password:shaSum.digest('hex')},function(err,doc){
+    shaSum.update(password);
+    Account.findOne({email:email,password:shaSum.digest('hex')},function(err,doc){
       callback(null!=doc);
     });
   };
