@@ -1,13 +1,7 @@
-/**
- * Module dependencies.
- */
-
-var express = require('express');
-var user = require('./routes/user');
-var http = require('http');
-var path = require('path');
-var nodemailer = require('nodemailer');
+var express = require("express");
 var app = express();
+var nodemailer = require('nodemailer');
+var MemoryStore = require('connect').session.MemoryStore;
 
 // Import the data layer
 var mongoose = require('mongoose');
@@ -18,28 +12,20 @@ var config = {
 // Import the accounts
 var Account = require('./models/Account')(config, mongoose, nodemailer);
 
-// all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.methodOverride());
-app.use(express.cookieParser());
-app.use(express.session({secret: '1234567890QWERTY'}));
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
-mongoose.connect('mongodb://localhost/nodebackbone');// development only
-if ('development' === app.get('env')) {
-    app.use(express.errorHandler());
-}
-
-app.get('/', function (req, res) {
-    res.render("index.jade", {layout:false});
+app.configure(function(){
+  app.set('view engine', 'jade');
+  app.use(express.static(__dirname + '/public'));
+  app.use(express.limit('1mb'));
+  app.use(express.bodyParser());
+  app.use(express.cookieParser());
+  app.use(express.session({secret: "SocialNet secret key", store: new MemoryStore()}));
+  mongoose.connect('mongodb://localhost/nodebackbone');
 });
+
+app.get('/', function(req, res){
+  res.render('index.jade');
+});
+
 app.post('/login', function(req, res) {
   console.log('login request');
   var email = req.param('email', null);
@@ -118,7 +104,6 @@ app.post('/resetPassword', function(req, res) {
   }
   res.render('resetPasswordSuccess.jade');
 });
-//app.get('/:id', user.showProfile);
-http.createServer(app).listen(app.get('port'), function(){
-    console.log('Express server listening on port ' + app.get('port'));
-});
+
+app.listen(8082);
+console.log("SocialNet is listening to port 8080.");
