@@ -22,16 +22,24 @@ html(lang="en")
       div.col-xs-6.sign-up
         h1 Register
         hr
-        form(role="form",action="register")
+        form(role="form",action="register", method="post")
           div.form-group
-            label(for="exampleInputEmail1") Email address
+            label(for="username") Username
             div
-              input.form-control#exampleInputEmail1(type="email" ,placeholder="Enter email")
+              input.form-control#username(type="text", name="username", 
+                placeholder="Enter Username")
+
+          div.form-group
+            label(for="email-id") Email address
+            div
+              input.form-control#email-id(type="email", name="emailId",
+                placeholder="Enter email")
           
           div.form-group
-            label(for="exampleInputPassword1") Password
+            label(for="user-password") Password
             div
-              input.form-control#exampleInputPassword1(type="password",placeholder="Password")
+              input.form-control#user-password(type="password", name="userPassword",
+                placeholder="Password")
           
           button.btn.btn-default(type="submit") Register
 
