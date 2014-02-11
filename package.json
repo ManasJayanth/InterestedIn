@@ -5,7 +5,8 @@
     "dependencies": {
         "express": "~3.0.0",
         "jade": ">= 0.0.1",
-        "mongoose": ">= 2.6.5"
+        "mongoose": ">= 2.6.5",
+        "node-mailer": "~0.1.1"
     },
     "description": "InterestedIn is a social network built using node.js",
     "main": "app.js",
