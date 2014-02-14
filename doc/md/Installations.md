@@ -3,16 +3,16 @@ Node.js can be installed from a package managaer or built from source
 
 #### Linux (DEB based)
 
-     $ sudo apt-get install nodejs
+     sudo apt-get install nodejs
 
 #### Linux (RPM based)
      
-     $ sudo yum install nodejs
+     sudo yum install nodejs
 
 
 #### OSX
 
-     $ brew install node
+     brew install node
 
 The official also site provides [binaries](http://nodejs.org/download/) for download.
 
@@ -29,9 +29,9 @@ sure you have Python 2.6 or 2.7 before you begin.
 
 Run the following from the directory
 
-    $ ./config
-    $ make
-    $ sudo make install
+    ./config
+    make
+    sudo make install
 
 # Mongoose
 Older version of node.js may give the following error after installing
@@ -46,3 +46,11 @@ from source. Then run the following
     npm install mongoose --save-dev
 
 Use the --save-dev option to add mongoose to package.json (if you have one)
+
+# Bower
+Bower is a front-end package management tool used for generic package
+management. Developed by twitter, Bower runs over Git, and is
+package-agnostic. A packaged component can be made up of any type of
+asset, and use any type of transport (e.g., AMD, CommonJS, etc.).
+
+    npm install -g bower

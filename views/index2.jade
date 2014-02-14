@@ -1,0 +1,47 @@
+doctype
+html(lang="en")
+  head
+    meta(charset='utf-8')
+    meta(http-equiv="X-UA-Compatible",content="IE=edge")
+    meta(name="viewport",content="width=device-width,initial-scale=1")
+    title InterestedIn
+    link(href="js/bower_components/bootstrap/dist/css/bootstrap.min.css",rel="stylesheet")
+    link(href="styles/home-index.css",rel="stylesheet")
+    script(data-main='js/boot', type='text/javascript',src='/js/lib/require.js')
+  body
+    div.container-fluid
+
+      header
+        h1 Welcome to InterestedIn!
+
+      div.col-xs-6.site-intro
+        p
+          | InterestedIn is a social network created using Node.js for
+          | like minded individuals
+
+      div.col-xs-6.sign-up
+        h1 Register
+        hr
+        form(role="form",action="register", method="post")
+          div.form-group
+            label(for="username") Username
+            div
+              input.form-control#username(type="text", name="username", 
+                placeholder="Enter Username")
+
+          div.form-group
+            label(for="email-id") Email address
+            div
+              input.form-control#email-id(type="email", name="emailId",
+                placeholder="Enter email")
+          
+          div.form-group
+            label(for="user-password") Password
+            div
+              input.form-control#user-password(type="password", name="userPassword",
+                placeholder="Password")
+          
+          button.btn.btn-default(type="submit") Register
+
+    script(src="js/bower_components/jquery/jquery.min.js")
+    script(src="js/bower_components/bootstrap/dist/js/bootstrap.min.js")

@@ -1,0 +1,22 @@
+{
+  "name": "InterestedIn",
+  "version": "0.0.0",
+  "homepage": "https://github.com/prometheansacrifice/InterestedIn",
+  "authors": [
+    "prometheansacrifice <harlequinsguitar@gmail.com>"
+  ],
+  "description": "Social network built using Node.js",
+  "main": "app.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.0"
+  }
+}

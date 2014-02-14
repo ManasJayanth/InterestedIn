@@ -1,0 +1,19 @@
+{
+    "eqeqeq": true,
+    "maxlen": 80,
+    "trailing": true,
+    "curly": true,
+    "undef": true,
+    "globals": {
+                 "PykCharts": true,
+                 "PykLib": true,
+                 "PykTwoD": true,
+                 "console": false,
+                 "d3": false,
+                 "$":false
+                },
+    "indent": 4,
+    "camelcase": true,
+    "newcap": true,
+    "node": true
+}
