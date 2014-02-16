@@ -12,6 +12,15 @@ module.exports = function(grunt) {
                     "profile.css": "profile.less"
                 }
             }
+        },
+        watch: {
+            scripts: {
+                files: ['*.less'],
+                tasks: ['less'],
+                options: {
+                    spawn: false,
+                },
+            },
         }
     });
 
