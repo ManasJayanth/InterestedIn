@@ -1,0 +1,18 @@
+/* Theme: https://kuler.adobe.com/Signaletique-color-theme-3494948/ */
+body {
+  padding: 0px;
+}
+header.col-xs-12 {
+  background-color: #573c1a;
+  padding: 0px;
+}
+header.col-xs-12 h1 {
+  margin-top: 0px;
+  font-size: 120%;
+  color: #de9842;
+  text-align: center;
+}
+#dp img,
+#banner img {
+  width: 100%;
+}
