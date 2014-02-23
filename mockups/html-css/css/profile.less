@@ -1,29 +1,91 @@
 /* Theme: https://kuler.adobe.com/Signaletique-color-theme-3494948/ */
-@color1: #573000;
-@color2: #DE9842;
-@color3: #D77600;
-@color4: #573C1A;
-@color5: #A45A00;
+@color1: #242D33;
+@color2: #576363;
+@color3: #0B2229;
+@color4: #E8D8B5;
+@color5: #992849;
 
 @golden1: 38.197%;
 @golden2: 61.803%;
 
+
+/* Mixins */
+.margins() {
+    margin: 1% 0.5%;
+}    
+
+/* Styles */
 body {
      padding: 0px;
 }
 
 header.col-xs-12 {
-    background-color: @color4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: @color1;
     padding: 0px;
 }
 
 header.col-xs-12  h1 {
-    margin-top:0px;
-    font-size: 120%;
-    color : @color2;
+    margin: 5px;
+    font-size: 1.5em; //1em = 12pt = 16px = 100%
+    color : @color4;
     text-align: center;
+}
+
+.container {
+    margin-top: 34px;
+}
+
+#dp {
+    width: 24.89%;
+    .margins;
+    float: left;
+}
+
+#banner {
+    width: 73.11%;
+    .margins;
+    float: right;
+}
+
+#banner h2 {
+    font-size: 2em;
+    font-weight: bold;
+    float: left;
+    padding: 1%;
+    .margins;
+}
+
+#banner h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    float: right;
+    padding: 1.2%;
+    .margins;
+}
+
+#banner ul {
+    padding: 5% 2%;
+    list-style-type: none;
+    line-height: 2em;
+    clear:both;
 }
 
 #dp img, #banner img {
     width: 100%;
+}
+
+
+#friendbox {
+    width: 24.89%;
+    clear: both;
+    .margins;
+}
+
+#friendbox h3 {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.2em;
 }
