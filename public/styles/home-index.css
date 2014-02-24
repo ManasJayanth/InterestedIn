@@ -1,25 +1,50 @@
 body{
     max-width: 90%;
     margin: auto;
-    background-image: url('../img/background.jpg'); 
 }
 
 header{
     margin: 30px 0px 30px 0px;
-    padding: 40px 10px 40px 10px;
+    padding: 40px 10px 40px 0px;
+}
+
+header h1 {
+    text-align: center;
 }
 
 .site-intro {
-    height: 400px;
-    padding: 16% 2% 15% 5%;
-    background-color: rgba(0,0,0,0.8);
+    width: 50%;
+    height: 200px;
+    padding: 10% 19.14% 15% 0%;
+    border-right: 1px solid #CCCCCC;
 }
 .site-intro p {
-    color: white;
 }
-.sign-up{
-    height: 400px;
-    padding-top: 1%;
-    background-color: rgba(0,0,0,0.8);
-    color: white;
+
+.sign-in  legend {
+    font-size: 2em;
+}
+
+.sign-in .not-signin {
+    margin: 5% 0%;
+    float: right;
+}
+
+.sign-in .not-signin a {
+    display: inline-block;
+    margin: 2%;
+}
+
+#content form#forgotpassword {
+    max-width: 720px;
+    margin: auto;
+}
+
+#content form#forgotpassword input[type="text"] {
+    width: 720px;
+}
+
+.form-control {
+    display: inline;
+    width: 100%;
 }
