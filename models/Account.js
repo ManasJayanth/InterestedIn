@@ -1,4 +1,4 @@
-var mailuser = require('../mailuser');
+var mailuser = require('../modules/mailuser');
 module.exports = function(config, mongoose, nodemailer) {
     var crypto = require('crypto');
 
