@@ -19,7 +19,7 @@ var config = {
 var Account = require('./models/Account')(config, mongoose, nodemailer);
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(express.favicon());

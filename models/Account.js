@@ -1,4 +1,4 @@
-var mailuser = require('../modules/mailuser');
+var mailuser = require('../mailuser');
 module.exports = function(config, mongoose, nodemailer) {
     var crypto = require('crypto');
 
@@ -44,7 +44,7 @@ module.exports = function(config, mongoose, nodemailer) {
                 // Email address is not a valid user
                 callback(false);
             } else {
-                mailuser.send(email, 'New password: ' + resetPasswordUrl);
+                 mailuser.send(email, 'New password: ' + resetPasswordUrl);
                 // var smtpTransport = nodemailer.createTransport('SMTP', config.mail);
                 // resetPasswordUrl += '?account=' + doc._id;
                 // smtpTransport.sendMail({
