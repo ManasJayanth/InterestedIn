@@ -179,6 +179,10 @@ app.post('/resetPassword', function(req, res) {
     }
     res.render('resetPasswordSuccess.jade');
 });
+
+app.get('/accounts/:id/contacts', function(req, res) {
+    res.end('No contacts yet');
+});
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
 });
