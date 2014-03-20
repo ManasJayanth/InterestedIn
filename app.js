@@ -231,12 +231,12 @@ app.get('/contacts/find', function(req, res) {
     });
 });
 
-app.delete('/accounts/:id/contact', function(req,res) {
+app.delete('/accounts/:id/contacts', function(req,res) {
     var accountId = req.params.id == 'me'
             ? req.session.accountId
             : req.params.id;
 
-    var contactId = req.param('id', null);
+    var contactId = req.param('contactId', null);
     console.log('url id: ' + contactId);
     // Missing contactId, don't bother going any further
     if ( null == contactId ) {
@@ -245,6 +245,7 @@ app.delete('/accounts/:id/contact', function(req,res) {
     }
     models.Account.findById(accountId, function(account) {
         if ( !account ) return;
+        console.log('contactId: ' + contactId);
         models.Account.findById(contactId, function(contact,err) {
             if ( !contact ) return;
             models.Account.removeContact(account, contactId);

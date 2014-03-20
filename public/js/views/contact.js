@@ -29,7 +29,9 @@ define(['SocialNetView', 'text!templates/contact.html'],
                        url: '/accounts/me/contacts',
                        type: 'DELETE',
                        data: {
-                           contactId: this.model.get('accountId') }})
+                           contactId: this.model.get('_id')
+                       }
+                   })
                        .done(function onSuccess() {
                            $responseArea.text('Contact Removed'); 
                        })
