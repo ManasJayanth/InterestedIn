@@ -11,7 +11,8 @@ define(
             render: function() {
                 this.$el.html(contactsTemplate);
             },
-            renderCollection: function(collection) { 
+            renderCollection: function(collection) {
+                console.log(collection);
                 collection.each(function(contact) {
                     var statusHtml = (new ContactView(
                         { removeButton: true, model: contact }

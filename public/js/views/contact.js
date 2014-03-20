@@ -1,30 +1,32 @@
 define(['SocialNetView', 'text!templates/contact.html'],
        function(SocialNetView, contactTemplate) {
-           var contactView = SocialNetView.extend({ 
-               addButton: false,
-               removeButton: false,
+           var contactView = SocialNetView.extend({
+               options: {},
+               addButton: true,
+               removeButton: true,
                tagName: 'li',
                events: {
                    "click .addbutton": "addContact",
                    "click .removebutton": "removeContact"
                },
                addContact: function() {
-                   var $responseArea = this.$('.actionArea'); 
-                   $.post('/accounts/me/contact',
+                   var $responseArea = this.$('.actionarea'); 
+                   $.post('/accounts/me/contacts',
                           {
-                              contactId: this.model.get('_id')},
-                          function onSuccess() {
+                              contactId: this.model.get('_id')
+                          })
+                       .done (function () {
                               $responseArea.text('Contact Added');
-                          },
-                          function onError() {
-                              $responseArea.text('Could not add contact');
-                          }
-                         ); },
+                          })
+                       .fail(function() {
+                           $responseArea.text('Couldnot add contact');
+                       });
+               },
                removeContact: function() {
                    var $responseArea = this.$('.actionarea');
                    $responseArea.text('Removing contact...');
                    $.ajax({
-                       url: '/accounts/me/contact',
+                       url: '/accounts/me/contacts',
                        type: 'DELETE',
                        data: {
                            contactId: this.model.get('accountId') }})
