@@ -1,9 +1,8 @@
 define(['SocialNetView', 'text!templates/contact.html'],
        function(SocialNetView, contactTemplate) {
            var contactView = SocialNetView.extend({
-               options: {},
-               addButton: true,
-               removeButton: true,
+               addButton: false,
+               removeButton: false,
                tagName: 'li',
                events: {
                    "click .addbutton": "addContact",
@@ -42,11 +41,12 @@ define(['SocialNetView', 'text!templates/contact.html'],
                initialize: function() {
                    /* Set the addButton variable in case it has been added 
                     in the constructor*/
-                   if ( this.options.addButton ) {
-                       this.addButton = this.options.addButton;
+                   var options = arguments[0].options;
+                   if ( options.addButton ) {
+                       this.addButton = options.addButton;
                    }
-                   if ( this.options.removeButton ) { 
-                       this.removeButton = this.options.removeButton;
+                   if ( options.removeButton ) { 
+                       this.removeButton = options.removeButton;
                    }
                },
                render: function() { 
@@ -55,7 +55,8 @@ define(['SocialNetView', 'text!templates/contact.html'],
                        addButton: this.addButton,
                        removeButton: this.removeButton
                    }));
-                   return this; }
+                   return this;
+               }
            });
            return contactView;
        });

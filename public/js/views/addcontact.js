@@ -1,37 +1,43 @@
-define(['SocialNetView', 'models/Contact', 'views/contact', 'text!templates/addcontact.html'],
-       function(SocialNetView, Contact, ContactView, addcontactTemplate)
-       {
-           var addcontactView = SocialNetView.extend({
-               el: $('#content'),
+var addContactDependencies = ['SocialNetView', 'models/Contact', 'views/contact',
+                              'text!templates/addcontact.html'];
 
-               events: {
-                   "submit form": "search"
-               },
+function addContactDefinition (SocialNetView, Contact, ContactView, addcontactTemplate) {
+    var addcontactView = SocialNetView.extend({
+        el: $('#content'),
 
-               search: function() {
-                   var view = this;
-                   $.get('/contacts/find',
-                          this.$('form').serialize(),
-                          function(data) { view.render(data); })
-                       .error(function(){
-                           $("#results").text('No contacts found.');
-                           $("#results").slideDown();
-                       });
-                   return false;
-               },
+        events: {
+            "submit form": "search"
+        },
 
-               render: function(resultList) {
-                   var view = this;
-                   this.$el.html(_.template(addcontactTemplate));
-                   if ( null != resultList ) {
-                       _.each(resultList, function (contactJson) {
-                           var contactModel = new Contact(contactJson);
-                           var contactHtml = (new ContactView({ addButton: true, model: contactModel })).render().el;
-                           $('#results').append(contactHtml);
-                       });
-                   }
-               }
-           });
+        search: function() {
+            var view = this;
+            $.get('/contacts/find',
+                  this.$('form').serialize(),
+                  function(data) { view.render(data); })
+                .error(function(){
+                    $("#results").text('No contacts found.');
+                    $("#results").slideDown();
+                });
+            return false;
+        },
 
-           return addcontactView;
-       });
+        render: function(resultList) {
+            var view = this;
+            this.$el.html(_.template(addcontactTemplate));
+            if ( null != resultList ) {
+                _.each(resultList, function (contactJson) {
+                    var contactModel = new Contact(contactJson);
+                    var contactHtml = (new ContactView({
+                        options: { addButton: true },
+                        model: contactModel
+                    })).render().el;
+                    $('#results').append(contactHtml);
+                });
+            }
+        }
+    });
+
+    return addcontactView;
+}
+
+define(addContactDependencies, addContactDefinition);

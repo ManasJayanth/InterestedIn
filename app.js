@@ -65,8 +65,8 @@ app.post('/login', function(req, res) {
 });
 
 app.post('/register', function(req, res) {
-    var firstName = req.param('firstName', '');
-    var lastName = req.param('lastName', '');
+    var firstName = req.param('firstName', null);
+    var lastName = req.param('lastName', null);
     var email = req.param('email', null);
     var password = req.param('password', null);
 

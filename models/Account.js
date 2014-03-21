@@ -103,6 +103,7 @@ module.exports = function(config, mongoose, nodemailer) {
         shaSum.update(password);
 
         console.log('Registering ' + email);
+        console.log(arguments);
         var user = new Account({
             email: email,
             name: {
@@ -111,6 +112,7 @@ module.exports = function(config, mongoose, nodemailer) {
             },
             password: shaSum.digest('hex')
         });
+        
         user.save(registerCallback);
         console.log('Save command was sent');
     }
