@@ -1,6 +1,5 @@
 module.exports = function(config, mongoose, nodemailer) {
     var crypto = require('crypto');
-
     var Status = new mongoose.Schema({
         name: {
             first:   { type: String },
@@ -11,8 +10,8 @@ module.exports = function(config, mongoose, nodemailer) {
 
     var Contact = new mongoose.Schema({
         name: {
-            first: {type:String},
-            last:    { type: String }
+            first: { type:String },
+            last: { type: String }
         },
         accountId: { type: mongoose.Schema.ObjectId },
         added:     { type: Date },     // When the contact was added
@@ -129,16 +128,25 @@ module.exports = function(config, mongoose, nodemailer) {
 
     var addContact = function(account, addcontact) {
         var contact = {
-            name: addcontact.name,
+            name: {
+                first: addcontact.name.first,
+                last: addcontact.name.last
+            },
             accountId: addcontact._id,
             added: new Date(),
             updated: new Date()
         };
-        account.contacts.push(contact);
-        account.save(function (err) {
-            if (err) {
-                console.log('Error saving account: ' + err);
-            }
+        var arr = account.contacts;
+        arr.push(contact);
+        console.log('arrr');
+        console.log(arr);
+        account.update({}, {$set: {contacts: arr}}, function () {
+//            console.log(account.contacts);
+            account.save(function (err) {
+                if (err) {
+                    console.log('Error saving account: ' + err);
+                }
+            });
         });
     };
 
