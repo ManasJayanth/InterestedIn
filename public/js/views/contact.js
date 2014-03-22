@@ -22,13 +22,14 @@ define(['SocialNetView', 'text!templates/contact.html'],
                        });
                },
                removeContact: function() {
+                   console.log(this.model.toJSON());
                    var $responseArea = this.$('.actionarea');
                    $responseArea.text('Removing contact...');
                    $.ajax({
                        url: '/accounts/me/contacts',
                        type: 'DELETE',
                        data: {
-                           contactId: this.model.get('_id')
+                           contactId: this.model.get('accountId')
                        }
                    })
                        .done(function onSuccess() {

@@ -89,11 +89,16 @@ module.exports = function(config, mongoose, nodemailer) {
     };
 
     var findById = function(accountId, callback) {
-        Account.findOne({_id:accountId}, function(err,doc) {
+        console.log('findById: Finding ' + accountId);
+        Account.findOne({_id: accountId}, function(err,doc) {
             if(err) {
                 throw new Error('Error occured: ' + err);
             }
-            callback(doc);
+            if (doc) {
+                callback(doc);
+            } else {
+                console.log('Account.findOne: no document found');
+            }
         });
     }
 
@@ -102,7 +107,6 @@ module.exports = function(config, mongoose, nodemailer) {
         shaSum.update(password);
 
         console.log('Registering ' + email);
-        console.log(arguments);
         var user = new Account({
             email: email,
             name: {
@@ -129,6 +133,7 @@ module.exports = function(config, mongoose, nodemailer) {
     var addContact = function(account, addcontact) {
         var contact = {
             name: {
+                // Instead of { name: account.name } because of some bug
                 first: addcontact.name.first,
                 last: addcontact.name.last
             },
@@ -138,8 +143,6 @@ module.exports = function(config, mongoose, nodemailer) {
         };
         var arr = account.contacts;
         arr.push(contact);
-        console.log('arrr');
-        console.log(arr);
         account.update({}, {$set: {contacts: arr}}, function () {
 //            console.log(account.contacts);
             account.save(function (err) {
@@ -151,10 +154,20 @@ module.exports = function(config, mongoose, nodemailer) {
     };
 
     var removeContact = function(account, contactId) {
-        if ( null == account.contacts ) return;
+        if ( null == account.contacts ) {
+            console.log('No contacts in the account');
+            return;
+        }
         account.contacts.forEach(function(contact) {
             if ( contact.accountId == contactId ) {
+                console.log('Match found and deleted');
                 account.contacts.remove(contact);
+
+                // // Find and remove item from an array
+                // var i = account.contacts.indexOf(contact);
+                // if(i != -1) {
+                //     array.splice(i, 1);
+                // }
             }
         });
         account.save();

@@ -97,7 +97,7 @@ app.get('/accounts/:id/activity', function(req, res) {
         if(account) {
             res.send(account.activity);
         } else {
-            console.log('`account` is null');
+            console.log('account is null');
         }
     });
 });
@@ -188,7 +188,12 @@ app.get('/accounts/:id/contacts', function(req, res) {
             ? req.session.accountId
             : req.params.id;
     models.Account.findById(accountId, function(account) {
-        res.send(account.contacts);
+        if (account) {
+            res.send(account.contacts);
+        } else {
+            console.log('findById: No account found');
+            res.send(500);
+        }
     });
 });
 
@@ -237,7 +242,7 @@ app.delete('/accounts/:id/contacts', function(req,res) {
             : req.params.id;
 
     var contactId = req.param('contactId', null);
-    console.log('url id: ' + contactId);
+    console.log('delete param: ' + contactId);
     // Missing contactId, don't bother going any further
     if ( null == contactId ) {
         res.send(400);
@@ -245,9 +250,12 @@ app.delete('/accounts/:id/contacts', function(req,res) {
     }
     models.Account.findById(accountId, function(account) {
         if ( !account ) return;
-        console.log('contactId: ' + contactId);
+        console.log('Finding contactId: ' + contactId);
         models.Account.findById(contactId, function(contact,err) {
-            if ( !contact ) return;
+            if ( !contact ) {
+                console.log('Returning: No contact by id ' + contactId);
+                return;
+            }
             models.Account.removeContact(account, contactId);
             // Kill the reverse link
             models.Account.removeContact(contact, accountId);
