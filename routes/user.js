@@ -3,7 +3,7 @@ var db = require('../modules/dbWrapper');
 exports.signup = function (req, res) {
     req.session.userId = req.body.username; // Not secure
     db.init();
-    db.addUser({ 
+    db.addUser({
         username: req.body.username,
         email: req.body.emailId,
         password: req.body.userPassword
