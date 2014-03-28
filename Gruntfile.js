@@ -6,13 +6,11 @@ module.exports = function(grunt) {
         
         pkg: grunt.file.readJSON('package.json'),
         
-        jsSrcPath: '.',
-        
         jshint: {
             options: {
                 jshintrc:true
             },
-            all: ['Gruntfile.js', '<%= jsSrcPath %>/*.js']
+            all: ['Gruntfile.js', '*.js', '*/*.js']
         },
         
         clean: {
