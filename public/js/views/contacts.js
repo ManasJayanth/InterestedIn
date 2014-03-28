@@ -2,7 +2,7 @@ var contactsDependencies = ['SocialNetView', 'views/contact',
                             'text!templates/contacts.html'];
 
 function contactsDefinition (SocialNetView, ContactView, contactsTemplate) {
-    var contactsView = SocialNetView.extend({ 
+    var contactsView = SocialNetView.extend({
         el: $('#content'),
         initialize: function() {
             _.bindAll(this, 'renderCollection');
@@ -19,7 +19,8 @@ function contactsDefinition (SocialNetView, ContactView, contactsTemplate) {
                     { options: {removeButton: true}, model: contact }
                 )).render().el;
                 $(statusHtml).appendTo('#contacts-list');
-            }); }
+            });
+        }
     });
     return contactsView;
 }

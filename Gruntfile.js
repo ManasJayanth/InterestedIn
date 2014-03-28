@@ -1,3 +1,5 @@
+var files = ['Gruntfile.js', '*.js', '*/*.js', 'public/js/*.js',
+                  'public/js/*/*.js', '!tmp/*'];
 module.exports = function(grunt) {
 
     'use strict';
@@ -10,8 +12,7 @@ module.exports = function(grunt) {
             options: {
                 jshintrc:true
             },
-            all: ['Gruntfile.js', '*.js', '*/*.js', 'public/js', '!tmp/*',
-                  '!public/js/components']
+            all: files
         },
         
         clean: {
@@ -38,7 +39,7 @@ module.exports = function(grunt) {
 
         watch: {
             scripts: {
-                files: ['*', '*/*.js'],
+                files: files,
                 tasks: ['jshint'],
                 options: {
                     spawn: false,
