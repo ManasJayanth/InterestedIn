@@ -42,7 +42,7 @@ module.exports = function(config, mongoose, nodemailer) {
     var registerCallback = function(err) {
         if (err) {
             return console.log(err);
-        };
+        }
         return console.log('Account was created');
     };
 
@@ -50,25 +50,34 @@ module.exports = function(config, mongoose, nodemailer) {
         var shaSum = crypto.createHash('sha256');
         shaSum.update(newpassword);
         var hashedPassword = shaSum.digest('hex');
-        Account.update({_id:accountId}, {$set: {password:hashedPassword}},{upsert:false},
-                       function changePasswordCallback(err) {
-                           console.log('Change password done for account ' + accountId);
-                       });
+        Account.update({_id:accountId},
+            {
+                $set: { password : hashedPassword }
+            },
+            {
+                upsert:false
+            },
+            function changePasswordCallback(err) {
+                console.log('Change password done for account ' + accountId);
+            });
     };
 
     var forgotPassword = function(email, resetPasswordUrl, callback) {
-        var user = Account.findOne({email: email}, function findAccount(err, doc){
+        var user = Account.findOne({email: email},
+        function findAccount(err, doc){
             if (err) {
                 // Email address is not a valid user
                 callback(false);
             } else {
-                var smtpTransport = nodemailer.createTransport('SMTP', config.mail);
+                var smtpTransport = nodemailer.createTransport('SMTP',
+                config.mail);
                 resetPasswordUrl += '?account=' + doc._id;
                 smtpTransport.sendMail({
                     from: 'thisapp@example.com',
                     to: doc.email,
                     subject: 'SocialNet Password Request',
-                    text: 'Click here to reset your password: ' + resetPasswordUrl
+                    text: 'Click here to reset your password: ' +
+                        resetPasswordUrl
                 }, function forgotPasswordResult(err) {
                     if (err) {
                         callback(false);
@@ -83,7 +92,10 @@ module.exports = function(config, mongoose, nodemailer) {
     var login = function(email, password, callback) {
         var shaSum = crypto.createHash('sha256');
         shaSum.update(password);
-        Account.findOne({email:email,password:shaSum.digest('hex')},function(err,doc){
+        Account.findOne({
+            email:email,
+            password:shaSum.digest('hex')
+        },function(err,doc){
             callback(doc);
         });
     };
@@ -100,7 +112,7 @@ module.exports = function(config, mongoose, nodemailer) {
                 console.log('Account.findOne: no document found');
             }
         });
-    }
+    };
 
     var register = function(email, password, firstName, lastName) {
         var shaSum = crypto.createHash('sha256');
@@ -118,7 +130,7 @@ module.exports = function(config, mongoose, nodemailer) {
         
         user.save(registerCallback);
         console.log('Save command was sent');
-    }
+    };
 
     var findByString = function(searchStr, callback) {
         var searchRegex = new RegExp(searchStr, 'i');
@@ -154,12 +166,12 @@ module.exports = function(config, mongoose, nodemailer) {
     };
 
     var removeContact = function(account, contactId) {
-        if ( null == account.contacts ) {
+        if ( null === account.contacts ) {
             console.log('No contacts in the account');
             return;
         }
         account.contacts.forEach(function(contact) {
-            if ( contact.accountId == contactId ) {
+            if ( contact.accountId === contactId ) {
                 console.log('Match found and deleted');
                 account.contacts.remove(contact);
 
@@ -174,9 +186,11 @@ module.exports = function(config, mongoose, nodemailer) {
     };
 
     var hasContact = function(account, contactId) {
-        if ( null == account.contacts ) return false;
+        if ( null === account.contacts ) {
+            return false;
+        }
         account.contacts.forEach(function(contact) {
-            if ( contact.accountId == contactId ) {
+            if ( contact.accountId === contactId ) {
                 return true;
             }
         });
@@ -194,5 +208,5 @@ module.exports = function(config, mongoose, nodemailer) {
         addContact: addContact,
         removeContact: removeContact,
         hasContact: hasContact
-    }
-}
+    };
+};
