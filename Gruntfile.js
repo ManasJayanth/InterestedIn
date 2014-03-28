@@ -35,6 +35,16 @@ module.exports = function(grunt) {
                 // Copy the project's pre-commit hook into .git/hooks
                 command: 'cp git-hooks/pre-commit .git/hooks/pre-commit'
             }
+        },
+
+        watch: {
+            scripts: {
+                files: ['*', '*/*.js'],
+                tasks: ['jshint'],
+                options: {
+                    spawn: false,
+                },
+            },
         }
     });
 
@@ -42,7 +52,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-jsdoc');
-
+    grunt.loadNpmTasks('grunt-contrib-watch');
 
     // Install pre-commit hooks
     grunt.registerTask('hookmeup', ['clean:hooks', 'shell:hooks']);
