@@ -170,8 +170,10 @@ module.exports = function(config, mongoose, nodemailer) {
             console.log('No contacts in the account');
             return;
         }
+        console.log('Finding and deleting: ' + contactId);
         account.contacts.forEach(function(contact) {
-            if ( contact.accountId === contactId ) {
+            console.log('checking against: ' + contact.accountId);
+            if ( contact.accountId == contactId ) {
                 console.log('Match found and deleted');
                 account.contacts.remove(contact);
 
@@ -182,7 +184,11 @@ module.exports = function(config, mongoose, nodemailer) {
                 // }
             }
         });
-        account.save();
+        account.save(function (err, doc, noAffected) {
+            // console.log('updated rec saved');
+            // console.log(doc)
+            // console.log('EODoc');
+        });
     };
 
     var hasContact = function(account, contactId) {
