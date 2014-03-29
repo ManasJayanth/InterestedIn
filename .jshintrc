@@ -5,13 +5,15 @@
     "curly": true,
     "undef": true,
     "globals": {
-                 "PykCharts": true,
-                 "PykLib": true,
-                 "PykTwoD": true,
                  "console": false,
                  "d3": false,
-                 "$":false
-                },
+                 "define":false,
+                 "require":false,
+                 "Backbone":false,
+                 "$":false,
+                 "window":false,
+                 "_":false
+    },
     "indent": 4,
     "camelcase": true,
     "newcap": true,

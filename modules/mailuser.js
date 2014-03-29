@@ -1,7 +1,7 @@
 exports.send = function (id, msg) {
     var nodemailer = require('nodemailer');
 
-    var credentials = require('./credentials'); 
+    var credentials = require('./credentials');
     /* Using a separate json file separates the credentials from code that
      gets version. (provided the json is set to ignore the credentials file) */
 
@@ -30,6 +30,7 @@ exports.send = function (id, msg) {
             console.log("Message sent: " + response.message);
         }
 
-        smtpTransport.close(); // shut down the connection pool, no more messages
+        smtpTransport.close();
+        // shut down the connection pool, no more messages
     });
 };

@@ -1,24 +1,25 @@
-define(['text!templates/forgotpassword.html'], function(forgotpasswordTemplate) {
-  var forgotpasswordView = Backbone.View.extend({
-    el: $('#content'),
+define(['text!templates/forgotpassword.html'],
+function(forgotpasswordTemplate) {
+    var forgotpasswordView = Backbone.View.extend({
+        el: $('#content'),
 
-    events: {
-      "submit form": "password"
-    },
+        events: {
+            "submit form": "password"
+        },
 
-    password: function() {
-      $.post('/forgotpassword', {
-        email: $('input[name=email]').val()
-      }, function(data) {
-        console.log(data);
-      });
-      return false;
-    },
+        password: function() {
+            $.post('/forgotpassword', {
+                email: $('input[name=email]').val()
+            }, function(data) {
+                console.log(data);
+            });
+            return false;
+        },
 
-    render: function() {
-      this.$el.html(forgotpasswordTemplate);
-    }
-  });
+        render: function() {
+            this.$el.html(forgotpasswordTemplate);
+        }
+    });
 
-  return forgotpasswordView;
+    return forgotpasswordView;
 });

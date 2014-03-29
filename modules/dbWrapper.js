@@ -31,7 +31,7 @@ db.once('open', function () {
 
 });
 
-exports.init = function () { 
+exports.init = function () {
     mongoose.connect('mongodb://localhost/' + database);
     // User.remove({}, function(err) { 
     //     console.log('collection removed') 
@@ -44,14 +44,18 @@ exports.init = function () {
 exports.addUser = function (userDetails, callback) {
     var user = new User(userDetails);
     user.save(function(err, user) {
-        if (err) return console.error(err);
+        if (err) {
+            return console.error(err);
+        }
         callback();
     });
 };
 
 exports.findUsers = function (callback) {
     User.find(function(err, user) {
-        if (err) return console.error(err);
+        if (err) {
+            return console.error(err);
+        }
         log(callback);
         callback(user);
     });

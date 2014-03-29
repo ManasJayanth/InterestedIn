@@ -47,10 +47,10 @@ app.post('/login', function(req, res) {
     var password = req.param('password', null);
 
     if ( null === email || email.length < 1 || null === password ||
-         password.length < 1 ) {
-             res.send(400);
-             return;
-         }
+    password.length < 1 ) {
+        res.send(400);
+        return;
+    }
 
     models.Account.login(email, password, function(account) {
         if ( !account ) {
@@ -71,10 +71,10 @@ app.post('/register', function(req, res) {
     var password = req.param('password', null);
 
     if ( null === email || email.length < 1 ||
-         null === password || password.length < 1 ) {
-             res.send(400);
-             return;
-         }
+    null === password || password.length < 1 ) {
+        res.send(400);
+        return;
+    }
 
     models.Account.register(email, password, firstName, lastName);
     res.send(200);
@@ -89,9 +89,8 @@ app.get('/account/authenticated', function(req, res) {
 });
 
 app.get('/accounts/:id/activity', function(req, res) {
-    var accountId = req.params.id == 'me'
-            ? req.session.accountId
-            : req.params.id;
+    var accountId = req.params.id === 'me' ?
+            req.session.accountId : req.params.id;
     console.log('Finding '  + accountId);
     models.Account.findById(accountId, function(account) {
         if(account) {
@@ -103,9 +102,8 @@ app.get('/accounts/:id/activity', function(req, res) {
 });
 
 app.get('/accounts/:id/status', function(req, res) {
-    var accountId = req.params.id == 'me'
-            ? req.session.accountId
-            : req.params.id;
+    var accountId = req.params.id === 'me' ?
+        req.session.accountId : req.params.id;
     models.Account.findById(accountId, function(account) {
         if(account) {
             res.send(account.status);
@@ -116,11 +114,10 @@ app.get('/accounts/:id/status', function(req, res) {
 });
 
 app.post('/accounts/:id/status', function(req, res) {
-    var accountId = req.params.id == 'me'
-            ? req.session.accountId
-            : req.params.id;
+    var accountId = req.params.id === 'me' ?
+            req.session.accountId : req.params.id;
     models.Account.findById(accountId, function(account) {
-        status = {
+        var status = {
             name: account.name,
             status: req.param('status', '')
         };
@@ -138,12 +135,11 @@ app.post('/accounts/:id/status', function(req, res) {
 });
 
 app.get('/accounts/:id', function(req, res) {
-    var accountId = req.params.id == 'me'
-            ? req.session.accountId
-            : req.params.id;
+    var accountId = req.params.id === 'me' ?
+            req.session.accountId : req.params.id;
     models.Account.findById(accountId, function(account) {
-        if ( accountId == 'me'
-             || models.Account.hasContact(account, req.session.accountId) ) {
+        if ( accountId === 'me' ||
+             models.Account.hasContact(account, req.session.accountId) ) {
             account.isFriend = true;
         }
         res.send(account);
@@ -184,9 +180,8 @@ app.post('/resetPassword', function(req, res) {
 });
 
 app.get('/accounts/:id/contacts', function(req, res) {
-    var accountId = req.params.id == 'me'
-            ? req.session.accountId
-            : req.params.id;
+    var accountId = req.params.id === 'me' ?
+            req.session.accountId : req.params.id;
     models.Account.findById(accountId, function(account) {
         if (account) {
             res.send(account.contacts);
@@ -198,13 +193,12 @@ app.get('/accounts/:id/contacts', function(req, res) {
 });
 
 app.post('/accounts/:id/contacts', function(req, res) {
-    var accountId = req.params.id == 'me'
-            ? req.session.accountId
-            : req.params.id;
+    var accountId = req.params.id === 'me' ?
+            req.session.accountId : req.params.id;
 
     var contactId = req.param('contactId', null);
     // Missing contactId, don't bother going any further
-    if ( null == contactId ) {
+    if ( null === contactId ) {
      //   res.send(400);
         return;
     }
@@ -223,33 +217,35 @@ app.post('/accounts/:id/contacts', function(req, res) {
 
 app.get('/contacts/find', function(req, res) {
     var searchStr = req.param('searchStr', null);
-    if ( null == searchStr ) {
+    if ( null === searchStr ) {
         res.send(400);
-        return; 
+        return;
     }
 
     models.Account.findByString(searchStr, function onSearchDone(err,accounts) {
-        if (err || accounts.length == 0) {
-            res.send(404); }else{
-                res.send(accounts);
-            }
+        if (err || accounts.length === 0) {
+            res.send(404);
+        } else {
+            res.send(accounts);
+        }
     });
 });
 
 app.delete('/accounts/:id/contacts', function(req,res) {
-    var accountId = req.params.id == 'me'
-            ? req.session.accountId
-            : req.params.id;
+    var accountId = req.params.id === 'me' ?
+            req.session.accountId : req.params.id;
 
     var contactId = req.param('contactId', null);
     console.log('delete param: ' + contactId);
     // Missing contactId, don't bother going any further
-    if ( null == contactId ) {
+    if ( null === contactId ) {
         res.send(400);
         return;
     }
     models.Account.findById(accountId, function(account) {
-        if ( !account ) return;
+        if ( !account ) {
+            return;
+        }
         console.log('Finding contactId: ' + contactId);
         models.Account.findById(contactId, function(contact,err) {
             if ( !contact ) {
@@ -259,7 +255,8 @@ app.delete('/accounts/:id/contacts', function(req,res) {
             models.Account.removeContact(account, contactId);
             // Kill the reverse link
             models.Account.removeContact(contact, accountId);
-        }); });
+        });
+    });
     // Note: Not in callback - this endpoint returns immediately and
     // processes in the background
     res.send(200);

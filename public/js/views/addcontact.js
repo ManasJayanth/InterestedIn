@@ -1,7 +1,9 @@
-var addContactDependencies = ['SocialNetView', 'models/Contact', 'views/contact',
+var addContactDependencies = ['SocialNetView', 'models/Contact',
+                              'views/contact',
                               'text!templates/addcontact.html'];
 
-function addContactDefinition (SocialNetView, Contact, ContactView, addcontactTemplate) {
+function addContactDefinition (SocialNetView, Contact, ContactView,
+                               addcontactTemplate) {
     var addcontactView = SocialNetView.extend({
         el: $('#content'),
 
@@ -24,7 +26,7 @@ function addContactDefinition (SocialNetView, Contact, ContactView, addcontactTe
         render: function(resultList) {
             var view = this;
             this.$el.html(_.template(addcontactTemplate));
-            if ( null != resultList ) {
+            if ( null !== resultList ) {
                 _.each(resultList, function (contactJson) {
                     var contactModel = new Contact(contactJson);
                     var contactHtml = (new ContactView({
