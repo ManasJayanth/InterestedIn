@@ -3,7 +3,7 @@ function(SocialNetView, contactTemplate) {
     var contactView = SocialNetView.extend({
         addButton: false,
         removeButton: false,
-        tagName: 'li',
+        tagName: 'div',
         events: {
             "click .addbutton": "addContact",
             "click .removebutton": "removeContact"

@@ -13,8 +13,6 @@ function contactsDefinition (SocialNetView, ContactView, contactsTemplate) {
         },
         renderCollection: function(collection) {
             collection.each(function(contact) {
-                console.log('here we are:');
-                console.log(contact);
                 var statusHtml = (new ContactView(
                     { options: {removeButton: true}, model: contact }
                 )).render().el;

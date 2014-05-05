@@ -5,3 +5,11 @@ div.page-content h2.adding-new-contacts {
     padding-top: 10px;
     font-weight: normal;
 }
+
+#contacts-list h1 {
+    display: inline;
+}
+
+.user-contact {
+    margin: 1%;
+ }

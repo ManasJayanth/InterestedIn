@@ -1,10 +1,12 @@
-<h1><%= model.name.first %> <%= model.name.last %></h1>
-<div class="actionarea">
-  <% if ( addButton ) { %>
-    <p><button class="addbutton">Add Contact</p>
-  <% } %>
-  <% if ( removeButton ) { %>
-    <p><button class="removebutton">Remove Contact</p>
-<% } %>
-<p> <%= model._id %> </p>
+<div class="user-contact">
+  <h1><%= model.name.first %> <%= model.name.last %></h1>
+  <div class="actionarea pull-right">
+    <% if ( addButton ) { %>
+    <p><button class="btn btn-success addbutton">Add Contact</p>
+    <% } %>
+    <% if ( removeButton ) { %>
+    <p><button class="btn btn-danger removebutton">Remove Contact</p>
+    <% } %>
+  </div>
+  <div class="clearfix"></div>
 </div>

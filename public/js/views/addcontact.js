@@ -8,7 +8,6 @@ function addContactDefinition (SocialNetView, Contact, ContactView,
         el: $('#content'),
 
         events: {
-            // "submit form": "search"
            "click #search-user": "search"
         },
 
