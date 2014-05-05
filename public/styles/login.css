@@ -1,0 +1,36 @@
+.site-intro {
+    width: 50%;
+    height: 200px;
+    padding: 10% 19.14% 15% 0%;
+    border-right: 1px solid #CCCCCC;
+}
+.site-intro p {
+}
+
+.sign-in  legend {
+    font-size: 2em;
+}
+
+.sign-in .not-signin {
+    margin: 5% 0%;
+    float: right;
+}
+
+.sign-in .not-signin a {
+    display: inline-block;
+    margin: 2%;
+}
+
+#content form#forgotpassword {
+    max-width: 720px;
+    margin: auto;
+}
+
+#content form#forgotpassword input[type="text"] {
+    width: 720px;
+}
+
+.form-control {
+    display: inline;
+    width: 100%;
+}
