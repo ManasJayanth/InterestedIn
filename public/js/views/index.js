@@ -21,7 +21,7 @@ function(SocialNetView, indexTemplate, StatusView, Status) {
         },
 
         onStatusAdded: function(status) {
-            var statusHtml = (new StatusView({ model: status })).render().el;
+            var statusHtml = (new StatusView({ model: status})).render().el;
             $(statusHtml).prependTo('.status_list').hide().fadeIn('slow');
         },
 

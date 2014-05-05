@@ -65,3 +65,7 @@ header button {
     display: block;
     margin-top: 10px;
 }
+
+.status-text {
+    padding: 5px 15px;
+}
