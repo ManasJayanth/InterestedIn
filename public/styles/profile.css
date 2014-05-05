@@ -1,0 +1,11 @@
+.profile-header h1 {
+    margin: 1%;
+}
+
+.recent-activity h2 {
+    background-color: #36B898;
+    text-align: center;
+    line-height: 2em;
+    font-size: 1.2em;
+    font-weight: normal;
+}

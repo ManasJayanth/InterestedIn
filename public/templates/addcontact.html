@@ -1,14 +1,32 @@
-<form>
-  <p>
-    <label>
-      Name or Email:
-      <input type="text" name="searchStr" />
-    </label>
-  </p>
+<header>
+  <h1 class="pull-left">InterestedIn</h1>
+  <div class="pull-right">
+    <form method="post" action="/logout">
+      <button class="btn" type="submit">Log Out</button>
+    </form>
+  </div>
+</header>
 
-  <p>
-    <input type="submit" value="Search Now" />
-  </p>
-</form>
 
-<div id="results"></div>
+<div class="page-content">
+  <h2 class="adding-new-contacts"> Adding new contacts </h2>
+  <hr>
+
+  <div class="row">
+    <div class="col-xs-3">
+    </div>
+
+    <div class="input-group col-xs-6">
+      <div class="input-group">
+        <input name="searchStr" type="text" class="form-control">
+        <span class="input-group-btn">
+          <button id="search-user" class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="results"></div>
+
+</div>
