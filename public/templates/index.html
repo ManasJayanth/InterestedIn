@@ -1,17 +1,54 @@
-<h1>My Social Network</h1>
+<header>
+  <h1 class="pull-left">InterestedIn</h1>
+  <div class="pull-right">
+    <form method="post" action="/logout">
+      <button class="btn" type="submit">Log Out</button>
+    </form>
+  </div>
+</header>
 
-<h2>Activity Stream</h2>
+<div class="navigation">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-4 page-link">
+        <a class="active" href="#index"> Activity Stream </a>
+      </div>
+      <div class="col-xs-4 page-link">
+        <a href="#profile/me"> Profile </a>
+      </div>
+      <div class="col-xs-4 page-link">
+        <a href="#contacts/me"> Contacts </a>
+      </div>
+    </div>
+  </div>
+</div>
 
-<form>
-  <fieldset>
-    <legend>Update My Status</legend>
 
-    <input type="text" name="status" />
-    <input type="submit" value="Add" />
-  </fieldset>
-</form>
+<div class="page-content">
+  <div class="row">
+  <!--   <div class="col-xs-3"> -->
+  <!--   </div> -->
+  <!--   <div class="col-xs-6"> -->
+  <!--     <form id="update-area"> -->
+  <!--       <div class="input-group"> -->
+  <!--         <input type="text" name="status" class="form-control"> -->
+  <!--         <span class="input-group-btn"> -->
+  <!--           <button class="btn btn-default" type="submit"> Update Status </button> -->
+  <!--         </span> -->
+  <!--       </div> -->
+  <!--     </form> -->
+  <!-- </div> -->
 
-<ul class="status_list" />
 
-<p><a href="#profile/me">See My Profile</a></p>
-<p><a href="#contacts/me">See My Contacts</a></p>
+    <div class="col-xs-12">
+      <form id="update-area">
+        <textarea class="form-control" rows="3" name="status"></textarea>
+        <button class="btn btn-default pull-right" type="submit"> Update Status </button>
+      </form>
+    </div>
+  </div>
+  
+  <hr>
+
+  <div class="status_list"></div>
+</div>

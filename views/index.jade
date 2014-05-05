@@ -2,16 +2,11 @@ extends layout
 
 block header
     link(href="styles/home-index.css",rel="stylesheet")
+    link(href="styles/login.css",rel="stylesheet")
 
 block content
   body
-    div#fb-root
-    div.container-fluid
-
-      header
-        h1 InterestedIn
-
-      div#content
+    div#content
 
 block scripts
     script(data-main='js/boot', type='text/javascript',src='/js/components/requirejs/require.js')  
