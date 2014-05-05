@@ -13,3 +13,11 @@ div.page-content h2.adding-new-contacts {
 .user-contact {
     margin: 1%;
  }
+
+.page-content a {
+    display: block;
+}
+
+.page-content .row {
+    padding: 1%;
+}
