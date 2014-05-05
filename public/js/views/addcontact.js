@@ -8,13 +8,14 @@ function addContactDefinition (SocialNetView, Contact, ContactView,
         el: $('#content'),
 
         events: {
-            "click #search-user": "search"
+            // "submit form": "search"
+           "click #search-user": "search"
         },
 
         search: function() {
             var view = this;
             $.get('/contacts/find',
-                  this.$('form').serialize(),
+                  "searchStr=" + $('input[name="searchStr"]'),
                   function(data) { view.render(data); })
                 .error(function(){
                     $("#results").text('No contacts found.');
