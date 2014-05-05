@@ -19,3 +19,9 @@ exports.showProfile = function (req, res) {
         res.send('Hi ' + req.params.id);
     }
 };
+
+exports.logout = function (req, res) {
+    req.session.loggedIn = false;
+    req.session.userId = null;
+    res.redirect('/');
+};

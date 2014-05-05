@@ -262,6 +262,7 @@ app.delete('/accounts/:id/contacts', function(req,res) {
     res.send(200);
 });
 
+app.post('/logout', user.logout);
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));

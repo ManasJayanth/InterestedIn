@@ -5,7 +5,7 @@ function(SocialNetView, indexTemplate, StatusView, Status) {
         el: $('#content'),
 
         events: {
-            "submit form": "updateStatus"
+            "submit form#update-area": "updateStatus"
         },
 
         initialize: function() {
