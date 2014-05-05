@@ -1,89 +1,58 @@
-<legend>Register</legend>
-<form role="form" id="register-user'>
-<fieldset>
-<legend>Your Name</legend>
-  <div class="form-group">
-    <label for="firstname">First Name</label>
-    <div>
-      <input id="firstname" type="text" name="firstname" placeholder="Enter your first name" class="form-control"/>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="lastname">Last Name</label>
-    <div>
-      <input id="lastname" type="text" name="lastname" placeholder="Enter your last name" class="form-control"/>
-    </div>
-  </div>
-  <!-- <label> -->
-  <!--   First: -->
-  <!--   <input type="text" name="firstName" /> -->
-  <!-- </label> -->
+<div id="registration-container">
+  <h1>Register</h1>
+  <hr>
+  <form role="form" id="register-user">
+    <fieldset>
+      <legend>Your Name</legend>
+      <div class="form-group">
+        <label for="firstname">First Name</label>
+        <div>
+          <input id="firstname" type="text" name="firstname" placeholder="Enter your first name" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastname">Last Name</label>
+        <div>
+          <input id="lastname" type="text" name="lastname" placeholder="Enter your last name" class="form-control"/>
+        </div>
+      </div>
+    </fieldset>
 
-  <!-- <label> -->
-  <!--   Last: -->
-  <!--   <input type="text" name="lastName" /> -->
-  <!-- </label> -->
-</fieldset>
+    <fieldset>
+      <legend>Email Address</legend>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <div>
+          <input id="email" type="text" name="email" placeholder="Enter your email address" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cemail">Email (confirm)</label>
+        <div>
+          <input id="cemail" type="text" name="cemail" placeholder="Confirm your email address" class="form-control"/>
+        </div>
+      </div>
+    </fieldset>
 
-<fieldset>
-  <legend>Email Address</legend>
-  <div class="form-group">
-    <label for="email">Email</label>
-    <div>
-      <input id="email" type="text" name="email" placeholder="Enter your email address" class="form-control"/>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="cemail">Email (confirm)</label>
-    <div>
-      <input id="cemail" type="text" name="cemail" placeholder="Confirm your email address" class="form-control"/>
-    </div>
-  </div>
+    <fieldset>
+      <legend>Password</legend>
 
-  <!-- <label> -->
-  <!--   Email: -->
-  <!--   <input type="text" name="email" /> -->
-  <!-- </label> -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div>
+          <input id="password" type="password" name="password" placeholder="Enter your password" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cpassword">Password (confirm)</label>
+        <div>
+          <input id="cpassword" type="password" name="cpassword" placeholder="Confirm your password" class="form-control"/>
+        </div>
+      </div>
+    </fieldset>
 
-  <!-- <br /> -->
-
-  <!-- <label> -->
-  <!--   Email (confirm): -->
-  <!--   <input type="text" name="cemail" /> -->
-  <!-- </label> -->
-</fieldset>
-
-<fieldset>
-  <legend>Password</legend>
-
-  <div class="form-group">
-    <label for="password">Password</label>
-    <div>
-      <input id="password" type="password" name="password" placeholder="Enter your password" class="form-control"/>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="cpassword">Password (confirm)</label>
-    <div>
-      <input id="cpassword" type="password" name="cpassword" placeholder="Confirm your password" class="form-control"/>
-    </div>
-  </div>
-
-
-  <!-- <label> -->
-  <!--   Password: -->
-  <!--   <input type="password" name="password" /> -->
-  <!-- </label> -->
-
-  <!-- <br /> -->
-
-  <!-- <label> -->
-  <!--   Password (confirm): -->
-  <!--   <input type="password" name="cpassword" /> -->
-  <!-- </label> -->
-</fieldset>
-
-<p>
-  <button type="submit" class="btn">Register Now</button>
-</p>
-</form>
+    <p>
+      <button type="submit" class="btn btn-success">Register Now</button>
+    </p>
+  </form>
+</div>
