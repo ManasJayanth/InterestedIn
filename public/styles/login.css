@@ -4,7 +4,11 @@
     padding: 10% 19.14% 15% 0%;
     border-right: 1px solid #CCCCCC;
 }
-.site-intro p {
+
+.login-container {
+    width: 80%;
+    margin: auto;
+    margin-top: 10%;
 }
 
 .sign-in  legend {
