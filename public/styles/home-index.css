@@ -60,3 +60,8 @@ header button {
 #update-area {
     margin: 10px;
 }
+
+#update-area button {
+    display: block;
+    margin-top: 10px;
+}

@@ -26,7 +26,7 @@ function(SocialNetView, indexTemplate, StatusView, Status) {
         },
 
         updateStatus: function() {
-            var statusText = $('input[name=status]').val();
+            var statusText = $('textarea[name=status]').val();
             var statusCollection = this.collection;
             $.post('/accounts/me/status', {
                 status: statusText
